@@ -1,3 +1,3 @@
 export default function Options() {
-  return <div className="text-green-500">options</div>;
+  return <div className="w-screen h-screen bg-black">options</div>;
 }
