@@ -3,7 +3,7 @@
     "types": ["node"],
     "baseUrl": ".",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["./src/*"]
     }
   },
   "files": [],
