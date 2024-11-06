@@ -1,3 +1,3 @@
 export default function Options() {
-  return <div>options</div>;
+  return <div className="text-green-500">options</div>;
 }
