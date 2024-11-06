@@ -14,8 +14,8 @@
       "32": "logo.png"
     },
     "default_title": "Assignment Importer",
-    "default_popup": "index.html"
+    "default_popup": "src/pages/popup/index.html"
   },
   "permissions": ["storage"],
-  "options_page": "src/options/options.html"
+  "options_page": "src/pages/options/index.html"
 }
