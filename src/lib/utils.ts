@@ -6,13 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function getCanvasURL() {
-  const url = chrome.storage.sync.get(["canvasUrl"], (res) => {
-    res.canvasUrl;
+  chrome.storage.sync.get(["canvasUrl"], (res) => {
+    if (res.canvasUrl === null || res.canvasUrl === "") {
+      throw new Error("No canvas URL is set");
+    }
+    return res;
   });
-  console.log(url);
-
-  if (url == null) {
-    throw new Error("No canvas URL is set");
-  }
-  return url;
 }

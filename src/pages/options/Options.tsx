@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-//import { getCanvasURL } from "@/lib/utils";
+import { getCanvasURL } from "@/lib/utils";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
@@ -25,18 +25,6 @@ export default function Options() {
       canvasURL: "",
     },
   });
-  function getCanvasURL() {
-    let url;
-    chrome.storage.sync.get(["canvasUrl"], (res) => {
-      url = res;
-    });
-
-    if (url == null) {
-      throw new Error("No canvas URL is set");
-    }
-
-    return url;
-  }
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -52,15 +40,7 @@ export default function Options() {
             onChange={(e) => setCanvasUrl(e.target.value)}
           />
           <Button onClick={handleSave}>Save</Button>
-          <Button
-            onClick={() => {
-              chrome.storage.sync.get(["canvasUrl"], (res) => {
-                console.log(res);
-              });
-            }}
-          >
-            Get Saved
-          </Button>
+          <Button onClick={() => {}}>Get Saved</Button>
         </CardContent>
       </Card>
     </div>
