@@ -1,3 +1,7 @@
 export default function Popup() {
-  return <div className="text-green-700">fd</div>;
+  return (
+    <div className="min-w-[256px] min-h-[256px] bg-background rounded-xl">
+      tes
+    </div>
+  );
 }
