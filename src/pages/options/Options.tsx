@@ -10,9 +10,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import useChromeStorage from "@/hooks/useStorage";
+import { Constants } from "@/lib/constants";
 import { setCanvasURL } from "@/lib/utils";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -21,18 +24,28 @@ const canvasAPIFormSchema = z.object({
 });
 
 export default function Options() {
+  const canvasURL =
+    useChromeStorage(Constants.chromeStorageKeys.canvasURL) ?? "";
+
+  console.log(canvasURL);
   const canvasAPIForm = useForm<z.infer<typeof canvasAPIFormSchema>>({
     resolver: zodResolver(canvasAPIFormSchema),
     defaultValues: {
-      canvasURL: "",
+      canvasURL: canvasURL,
     },
   });
 
   function onSubmit(values: z.infer<typeof canvasAPIFormSchema>) {
     const url = new URL(values.canvasURL);
     setCanvasURL(url);
-    console.log("Canvas URL saved");
   }
+
+  const { reset } = canvasAPIForm;
+  useEffect(() => {
+    if (canvasURL) {
+      reset({ canvasURL });
+    }
+  }, [canvasURL, reset]);
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -51,7 +64,7 @@ export default function Options() {
                 name="canvasURL"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Username</FormLabel>
+                    <FormLabel>Canvas URL</FormLabel>
                     <FormControl>
                       <Input placeholder="Canvas URL" {...field} />
                     </FormControl>
