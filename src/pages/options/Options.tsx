@@ -1,30 +1,38 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Form,
+  FormControl,
+  FormDescription,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { getCanvasURL } from "@/lib/utils";
+import { setCanvasURL } from "@/lib/utils";
+
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const canvasAPIFormSchema = z.object({
-  canvasURL: z.string().email({ message: "Invalid email" }),
+  canvasURL: z.string().url({ message: "Invalid email" }),
 });
 
 export default function Options() {
-  const [canvasUrl, setCanvasUrl] = useState<string>("");
-
-  const handleSave = () => {
-    const url = new URL(canvasUrl);
-    chrome.storage.sync.set({ canvasUrl: url.origin });
-  };
-
   const canvasAPIForm = useForm<z.infer<typeof canvasAPIFormSchema>>({
     resolver: zodResolver(canvasAPIFormSchema),
     defaultValues: {
       canvasURL: "",
     },
   });
+
+  function onSubmit(values: z.infer<typeof canvasAPIFormSchema>) {
+    const url = new URL(values.canvasURL);
+    setCanvasURL(url);
+    console.log("Canvas URL saved");
+  }
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
@@ -33,14 +41,30 @@ export default function Options() {
           <CardTitle>Canvas URL</CardTitle>
         </CardHeader>
         <CardContent>
-          <Input
-            type="url"
-            placeholder="Any canvas URL you use to access your school's site"
-            value={canvasUrl}
-            onChange={(e) => setCanvasUrl(e.target.value)}
-          />
-          <Button onClick={handleSave}>Save</Button>
-          <Button onClick={() => {}}>Get Saved</Button>
+          <Form {...canvasAPIForm}>
+            <form
+              onSubmit={canvasAPIForm.handleSubmit(onSubmit)}
+              className="space-y-8"
+            >
+              <FormField
+                control={canvasAPIForm.control}
+                name="canvasURL"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Username</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Canvas URL" {...field} />
+                    </FormControl>
+                    <FormDescription>
+                      Any link to your Canvas LMS when signed in
+                    </FormDescription>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit">Save</Button>
+            </form>
+          </Form>
         </CardContent>
       </Card>
     </div>
