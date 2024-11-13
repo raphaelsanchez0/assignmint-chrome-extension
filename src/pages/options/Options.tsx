@@ -25,7 +25,7 @@ const canvasAPIFormSchema = z.object({
 
 export default function Options() {
   const canvasURL =
-    useChromeStorage(Constants.chromeStorageKeys.canvasURL) ?? "";
+    useChromeStorage(Constants.chromeStorageKeys.canvasURL)?.toString() ?? "";
 
   const canvasAPIForm = useForm<z.infer<typeof canvasAPIFormSchema>>({
     resolver: zodResolver(canvasAPIFormSchema),

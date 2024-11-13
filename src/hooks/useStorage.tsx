@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 export default function useChromeStorage(key: string) {
-  const [value, setValue] = useState<string | null>(null);
+  const [value, setValue] = useState<URL | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {

@@ -16,6 +16,6 @@
     "default_title": "Assignment Importer",
     "default_popup": "src/pages/popup/index.html"
   },
-  "permissions": ["storage"],
+  "permissions": ["storage", "tabs"],
   "options_page": "src/pages/options/index.html"
 }
