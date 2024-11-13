@@ -20,14 +20,13 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 
 const canvasAPIFormSchema = z.object({
-  canvasURL: z.string().url({ message: "Invalid email" }),
+  canvasURL: z.string().url({ message: "Invalid url" }),
 });
 
 export default function Options() {
   const canvasURL =
     useChromeStorage(Constants.chromeStorageKeys.canvasURL) ?? "";
 
-  console.log(canvasURL);
   const canvasAPIForm = useForm<z.infer<typeof canvasAPIFormSchema>>({
     resolver: zodResolver(canvasAPIFormSchema),
     defaultValues: {
@@ -35,17 +34,17 @@ export default function Options() {
     },
   });
 
-  function onSubmit(values: z.infer<typeof canvasAPIFormSchema>) {
-    const url = new URL(values.canvasURL);
-    setCanvasURL(url);
-  }
-
   const { reset } = canvasAPIForm;
   useEffect(() => {
     if (canvasURL) {
       reset({ canvasURL });
     }
   }, [canvasURL, reset]);
+
+  function onSubmit(values: z.infer<typeof canvasAPIFormSchema>) {
+    const url = new URL(values.canvasURL);
+    setCanvasURL(url);
+  }
 
   return (
     <div className="w-screen h-screen flex items-center justify-center">
