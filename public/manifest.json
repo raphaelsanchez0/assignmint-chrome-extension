@@ -16,6 +16,11 @@
     "default_title": "Assignment Importer",
     "default_popup": "src/pages/popup/index.html"
   },
-  "permissions": ["storage", "tabs"],
-  "options_page": "src/pages/options/index.html"
+  "permissions": ["storage", "tabs", "activeTab", "scripting"],
+  "options_page": "src/pages/options/index.html",
+  "background": {
+    "service_worker": "assets/background/background.js",
+    "type": "module"
+  },
+  "host_permissions": ["<all_urls>"]
 }

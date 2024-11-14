@@ -4,7 +4,9 @@ import useChromeStorage from "@/hooks/useStorage";
 import { Constants } from "@/lib/constants";
 
 export default function Popup() {
-  const canvasURL = useChromeStorage(Constants.chromeStorageKeys.canvasURL);
+  const canvasURL = useChromeStorage<URL>(
+    Constants.chromeStorageKeys.canvasURL
+  );
 
   return (
     <div className="min-w-[256px] min-h-[256px] bg-background rounded-xl">
