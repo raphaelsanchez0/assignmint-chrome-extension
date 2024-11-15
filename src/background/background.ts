@@ -6,6 +6,8 @@ chrome.runtime.onInstalled.addListener(() => {
   });
 });
 
-chrome.tabs.onCreated.addListener((tab) => {
-  console.log(tab);
+chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+  if (message.assignments) {
+    console.log("test" + message.assignments);
+  }
 });
