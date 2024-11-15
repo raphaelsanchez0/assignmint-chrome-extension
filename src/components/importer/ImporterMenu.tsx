@@ -5,7 +5,6 @@ import useChromeStorage from "@/hooks/useStorage";
 import { Constants } from "@/lib/constants";
 
 export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
-  const [newTabId, setNewTabId] = useState<number | null>(null);
   const userNotAuthenticated = useChromeStorage<boolean>(
     Constants.chromeStorageKeys.canvasUnauthenticatedError
   );
