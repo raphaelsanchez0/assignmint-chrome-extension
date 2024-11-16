@@ -2,18 +2,8 @@ var assignmentsAndDates = document.querySelectorAll(
   ".agenda-event__title, .agenda-date"
 ) as NodeListOf<HTMLElement>;
 
-type assignmentByDate = {
-  [date: string]: string[];
-};
-
-//h3.agenda-date > span[aria-hidden="true"]
-
 if (assignmentsAndDates.length > 0) {
-  const assignmentAndDatesArray = Array.from(assignmentsAndDates, (element) => {
-    return element;
-  });
   const assignmentsByDate = new Map<string, string[]>();
-
   let currentDate: string | null = null;
   assignmentsAndDates.forEach((element) => {
     if (element.classList.contains("agenda-date")) {
@@ -32,6 +22,5 @@ if (assignmentsAndDates.length > 0) {
 
   const assignmentsByDateObject = Object.fromEntries(assignmentsByDate);
 
-  // Send the list of assignment names to the background script
   chrome.runtime.sendMessage({ assignments: assignmentsByDateObject });
 }

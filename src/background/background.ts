@@ -1,11 +1,3 @@
-import { Constants } from "@/lib/constants";
-
-chrome.runtime.onInstalled.addListener(() => {
-  chrome.storage.local.set({
-    [Constants.chromeStorageKeys.canvasUnauthenticatedError]: false,
-  });
-});
-
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   if (message.assignments) {
     console.log(message.assignments);
@@ -15,4 +7,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     }));
     console.log(array);
   }
+  chrome.windows.create({
+    url: "https://www.assignmint.tech/dashboard",
+    type: "popup",
+    height: 500,
+    width: 700,
+  });
 });
