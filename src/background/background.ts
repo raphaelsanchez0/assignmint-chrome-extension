@@ -19,7 +19,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       url: importURL.toString(),
       type: "normal",
       height: 500,
-      width: 700,
+      width: 1100,
     });
   }
 });
