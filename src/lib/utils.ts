@@ -23,3 +23,13 @@ export function setCanvasURL(url: URL) {
     [Constants.chromeStorageKeys.canvasURL]: url.origin,
   });
 }
+
+export function convertAssignmentsByDateToQueryString(assignmentsByDate: {
+  [date: string]: string[];
+}) {
+  const params = new URLSearchParams();
+  for (const [date, assignments] of Object.entries(assignmentsByDate)) {
+    params.append(date, assignments.join(","));
+  }
+  return params.toString();
+}

@@ -3,4 +3,6 @@ export abstract class Constants {
     canvasURL: "canvasURL",
     canvasUnauthenticatedError: "canvasUnauthenticatedError",
   };
+  static readonly assignmintBaseURL = "https://www.assignmint.tech";
+  static readonly devBaseURL = "http://localhost:3000";
 }
