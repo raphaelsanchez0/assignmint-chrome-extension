@@ -9,6 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Trash, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import useChromeStorage from "@/hooks/useStorage";
 import { Constants } from "@/lib/constants";
@@ -46,6 +47,11 @@ export default function Options() {
     setCanvasURL(url);
   }
 
+  function handleClearCanvasURL() {
+    setCanvasURL(undefined);
+    reset({ canvasURL: "" });
+  }
+
   return (
     <div className="w-screen h-screen flex items-center justify-center">
       <Card className="w-1/3 h-2/4">
@@ -64,9 +70,14 @@ export default function Options() {
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Canvas URL</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Canvas URL" {...field} />
-                    </FormControl>
+                    <div className="flex gap-2">
+                      <FormControl>
+                        <Input placeholder="Canvas URL" {...field} />
+                      </FormControl>
+                      <Button onClick={handleClearCanvasURL}>
+                        <Trash />
+                      </Button>
+                    </div>
                     <FormDescription>
                       Any link to your Canvas LMS when signed in
                     </FormDescription>

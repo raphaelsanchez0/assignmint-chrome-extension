@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener((message) => {
     const assignmentsByDate: { [date: string]: string[] } = Object.fromEntries(
       Object.entries(message.assignments).map(([date, assignments]) => [
         date,
-        assignments as string[], // Cast or ensure assignments are strings
+        assignments as string[],
       ])
     );
 

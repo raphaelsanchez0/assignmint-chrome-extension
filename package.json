@@ -8,7 +8,7 @@
     "build": "tsc -b && vite build",
     "build-content": "vite build --watch --config ./vite-content.config.ts",
     "build-watch-concurrently": "concurrently \"vite build --watch --config ./vite.config.js\" \"vite build --watch --config ./vite-background.config.ts\" \"vite build --watch --config ./vite-content.config.ts\"",
-    "build-all":"vite build --config ./vite.config.js && vite build --config ./vite-background.config.ts && vite build --watch --config ./vite-content.config.ts",
+    "build-all": "vite build --config ./vite.config.js && vite build --config ./vite-background.config.ts && vite build --watch --config ./vite-content.config.ts",
     "lint": "eslint .",
     "preview": "vite preview"
   },
