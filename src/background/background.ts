@@ -1,7 +1,7 @@
 import { Constants } from "@/lib/constants";
 import { convertAssignmentsByDateToQueryString } from "@/lib/utils";
 
-chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener((message) => {
   if (message.assignments) {
     const assignmentsByDate: { [date: string]: string[] } = Object.fromEntries(
       Object.entries(message.assignments).map(([date, assignments]) => [
