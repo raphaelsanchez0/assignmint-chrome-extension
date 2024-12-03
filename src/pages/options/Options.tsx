@@ -48,7 +48,7 @@ export default function Options() {
   }
 
   function handleClearCanvasURL() {
-    setCanvasURL(undefined);
+    setCanvasURL("");
     reset({ canvasURL: "" });
   }
 

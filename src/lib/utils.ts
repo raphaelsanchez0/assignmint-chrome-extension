@@ -18,7 +18,7 @@ export async function getCanvasURL(): Promise<string> {
   });
 }
 
-export function setCanvasURL(url: URL | undefined) {
+export function setCanvasURL(url: URL | "") {
   chrome.storage.sync.set({
     [Constants.chromeStorageKeys.canvasURL]: url,
   });
