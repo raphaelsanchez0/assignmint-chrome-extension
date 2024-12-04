@@ -8,19 +8,25 @@ export function cn(...inputs: ClassValue[]) {
 
 export async function getCanvasURL(): Promise<string> {
   return new Promise((resolve, reject) => {
-    chrome.storage.sync.get(["canvasUrl"], (res) => {
-      if (res.canvasUrl === null || res.canvasUrl === "") {
-        reject(new Error("No canvas URL is set"));
+    chrome.storage.sync.get([Constants.chromeStorageKeys.canvasURL], (res) => {
+      if (chrome.runtime.lastError) {
+        reject(chrome.runtime.lastError);
       } else {
-        resolve(res.canvasUrl);
+        resolve(res[Constants.chromeStorageKeys.canvasURL]);
       }
     });
   });
 }
 
-export function setCanvasURL(url: URL | "") {
+export function setCanvasURL(url: URL) {
   chrome.storage.sync.set({
-    [Constants.chromeStorageKeys.canvasURL]: url,
+    [Constants.chromeStorageKeys.canvasURL]: url.origin,
+  });
+}
+
+export function clearCanvasURL() {
+  chrome.storage.sync.set({
+    [Constants.chromeStorageKeys.canvasURL]: null,
   });
 }
 

@@ -13,7 +13,7 @@ import { Trash, Trash2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import useChromeStorage from "@/hooks/useStorage";
 import { Constants } from "@/lib/constants";
-import { setCanvasURL } from "@/lib/utils";
+import { clearCanvasURL, setCanvasURL } from "@/lib/utils";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect } from "react";
@@ -48,7 +48,7 @@ export default function Options() {
   }
 
   function handleClearCanvasURL() {
-    setCanvasURL("");
+    clearCanvasURL();
     reset({ canvasURL: "" });
   }
 
