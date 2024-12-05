@@ -1,4 +1,5 @@
 import ImporterMenu from "@/components/importer/ImporterMenu";
+import NoCanvasUrlError from "@/components/no-canvas-url-error/NoCanvasUrlError";
 import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 
 import { getCanvasURL } from "@/lib/utils";
@@ -21,7 +22,11 @@ export default function Popup() {
         <CardTitle>Assignmint Canvas Importer</CardTitle>
       </CardHeader>
       <CardContent>
-        {canvasURL && <ImporterMenu canvasURL={canvasURL} />}
+        {canvasURL ? (
+          <ImporterMenu canvasURL={canvasURL} />
+        ) : (
+          <NoCanvasUrlError />
+        )}
       </CardContent>
     </div>
   );

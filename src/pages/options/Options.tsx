@@ -9,7 +9,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Trash, Trash2 } from "lucide-react";
+import { Trash } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import useChromeStorage from "@/hooks/useStorage";
 import { Constants } from "@/lib/constants";
