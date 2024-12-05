@@ -23,7 +23,7 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
     Constants.canvasAssignmentsURLPath
   );
 
-  const handleCreateNewTab = () => {
+  const handleOpenCanvasAssignments = () => {
     chrome.tabs.create({ url: canvasCalenderURL.toString() }, (tab) => {
       if (tab?.id) {
         chrome.scripting.executeScript({
@@ -32,6 +32,12 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
         });
       }
     });
+  };
+
+  const assignmintLoginUrl = Constants.assignmintBaseURL + "/login";
+
+  const handleOpenLoginToAssignmint = () => {
+    chrome.tabs.create({ url: assignmintLoginUrl });
   };
 
   const handleImportAssignments = () => {
@@ -57,12 +63,23 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
             start
           </p>
         ) : (
-          <p className="text-left">Import Assignments</p>
+          <p>
+            Make sure you are{" "}
+            <span
+              className="font-bold text-black cursor-pointer"
+              onClick={handleOpenLoginToAssignmint}
+            >
+              Logged into Assignmint
+            </span>{" "}
+            before importing
+          </p>
         )}
       </CardDescription>
       <div className="flex">
         {!isCanvasAssignmentUrl ? (
-          <Button onClick={handleCreateNewTab}>View Assignments</Button>
+          <Button onClick={handleOpenCanvasAssignments}>
+            View Assignments
+          </Button>
         ) : (
           <Button onClick={handleImportAssignments}>Import</Button>
         )}
