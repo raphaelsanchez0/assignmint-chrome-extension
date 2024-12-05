@@ -21,13 +21,11 @@ export default function Popup() {
       <CardHeader>
         <CardTitle>Assignmint Canvas Importer</CardTitle>
       </CardHeader>
-      <CardContent>
-        {canvasURL ? (
-          <ImporterMenu canvasURL={canvasURL} />
-        ) : (
-          <NoCanvasUrlError />
-        )}
-      </CardContent>
+      {canvasURL ? (
+        <ImporterMenu canvasURL={canvasURL} />
+      ) : (
+        <NoCanvasUrlError />
+      )}
     </div>
   );
 }

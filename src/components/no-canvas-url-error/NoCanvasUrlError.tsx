@@ -8,9 +8,6 @@ import {
 } from "../ui/card";
 
 export default function NoCanvasUrlError() {
-  const handleOptionsClick = () => {
-    chrome.runtime.openOptionsPage();
-  };
   return (
     <Card className="border-red-500 bg-red-100">
       <CardHeader>

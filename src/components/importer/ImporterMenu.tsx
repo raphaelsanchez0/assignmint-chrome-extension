@@ -1,8 +1,22 @@
+import { useEffect } from "react";
 import { Button } from "../ui/button";
-import { Card, CardContent } from "../ui/card";
+import { CardDescription, CardFooter } from "../ui/card";
+import { Constants } from "@/lib/constants";
 
 export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
-  const canvasCalenderURL = new URL("calendar#view_name=agenda", canvasURL);
+  const canvasCalenderURL = new URL(
+    Constants.canvasAssignmentsURLPath,
+    canvasURL
+  );
+
+  useEffect(() => {
+    chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
+      const activeTab = tabs[0];
+      const url = activeTab.url;
+
+      console.log(url);
+    });
+  }, []);
 
   const handleCreateNewTab = () => {
     chrome.tabs.create({ url: canvasCalenderURL.toString() }, (tab) => {
@@ -28,10 +42,12 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
   };
 
   return (
-    <Card>
-      <Button onClick={handleCreateNewTab}>Go to link</Button>
-      <Button onClick={handleImportAssignments}>Scrape</Button>
-      <CardContent>Be sure to be logged into Canvas</CardContent>
-    </Card>
+    <CardFooter className="flex flex-col">
+      <CardDescription>Be sure to be logged into Canvas</CardDescription>
+      <div className="flex">
+        <Button onClick={handleCreateNewTab}>View Assignments</Button>
+        <Button onClick={handleImportAssignments}>Import</Button>
+      </div>
+    </CardFooter>
   );
 }

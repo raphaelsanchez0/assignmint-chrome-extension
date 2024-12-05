@@ -10,7 +10,7 @@ chrome.runtime.onMessage.addListener((message) => {
       ])
     );
 
-    const importURL = new URL("import", Constants.assignmintBaseURL);
+    const importURL = new URL("import", Constants.urls.assignmintBaseURL);
     const assignmentsQueryString =
       convertAssignmentsByDateToQueryString(assignmentsByDate);
     importURL.searchParams.append("assignments", assignmentsQueryString);
