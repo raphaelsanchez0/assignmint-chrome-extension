@@ -1,6 +1,6 @@
 import ImporterMenu from "@/components/importer/ImporterMenu";
 import NoCanvasUrlError from "@/components/no-canvas-url-error/NoCanvasUrlError";
-import { CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { CardHeader, CardTitle } from "@/components/ui/card";
 
 import { getCanvasURL } from "@/lib/utils";
 import { useEffect, useState } from "react";

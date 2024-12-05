@@ -1,9 +1,11 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { CardDescription, CardFooter } from "../ui/card";
 import { Constants } from "@/lib/constants";
+import { set } from "react-hook-form";
 
 export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
+  const [currentURL, setCurrentURL] = useState<string | null>(null);
   const canvasCalenderURL = new URL(
     Constants.canvasAssignmentsURLPath,
     canvasURL
@@ -13,10 +15,13 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
       const activeTab = tabs[0];
       const url = activeTab.url;
-
-      console.log(url);
+      setCurrentURL(url!);
     });
   }, []);
+
+  const isCanvasAssignmentUrl = currentURL?.includes(
+    Constants.canvasAssignmentsURLPath
+  );
 
   const handleCreateNewTab = () => {
     chrome.tabs.create({ url: canvasCalenderURL.toString() }, (tab) => {
@@ -43,10 +48,24 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
 
   return (
     <CardFooter className="flex flex-col">
-      <CardDescription>Be sure to be logged into Canvas</CardDescription>
+      <CardDescription className="mb-2">
+        {!isCanvasAssignmentUrl ? (
+          <p>
+            {" "}
+            Be logged into Canvas then click{" "}
+            <span className="font-bold text-black"> View Assignments</span> to
+            start
+          </p>
+        ) : (
+          <p className="text-left">Import Assignments</p>
+        )}
+      </CardDescription>
       <div className="flex">
-        <Button onClick={handleCreateNewTab}>View Assignments</Button>
-        <Button onClick={handleImportAssignments}>Import</Button>
+        {!isCanvasAssignmentUrl ? (
+          <Button onClick={handleCreateNewTab}>View Assignments</Button>
+        ) : (
+          <Button onClick={handleImportAssignments}>Import</Button>
+        )}
       </div>
     </CardFooter>
   );
