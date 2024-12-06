@@ -3,11 +3,10 @@ export abstract class Constants {
     canvasURL: "canvasURL",
   };
 
-  static readonly urls: {
-    assignmintBaseURL: "https://www.assignmint.tech";
-    devBaseURL: "http://localhost:3000";
+  static readonly urls = {
+    assignmintBaseURL: "https://www.assignmint.tech",
+    devBaseURL: "http://localhost:3000",
   };
-  static readonly assignmintBaseURL = "https://www.assignmint.tech";
-  static readonly devBaseURL = "http://localhost:3000";
+
   static readonly canvasAssignmentsURLPath = "calendar#view_name=agenda";
 }

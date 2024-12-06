@@ -18,7 +18,7 @@ chrome.runtime.onMessage.addListener((message) => {
     chrome.windows.create({
       url: importURL.toString(),
       type: "normal",
-      height: 500,
+      height: 1000,
       width: 1100,
     });
   }

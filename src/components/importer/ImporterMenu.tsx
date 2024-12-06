@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Button } from "../ui/button";
 import { CardDescription, CardFooter } from "../ui/card";
 import { Constants } from "@/lib/constants";
-import { set } from "react-hook-form";
 
 export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
   const [currentURL, setCurrentURL] = useState<string | null>(null);
@@ -34,7 +33,7 @@ export default function ImporterMenu({ canvasURL }: { canvasURL: URL }) {
     });
   };
 
-  const assignmintLoginUrl = Constants.assignmintBaseURL + "/login";
+  const assignmintLoginUrl = Constants.urls.assignmintBaseURL + "/login";
 
   const handleOpenLoginToAssignmint = () => {
     chrome.tabs.create({ url: assignmintLoginUrl });
