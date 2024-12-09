@@ -1,6 +1,7 @@
 # Assignmint Chrome Extension 📝
 
-Assignmint is an online platform for organizing assignments and coursework, directly from Canvas! This extension complents the platform by allowing students to import assignments by scaping assignments directly from canvas.
+[Assignmint](https://github.com/raphaelsanchez0/assignmint) is an online platform for organizing assignments and coursework, directly from Canvas! This extension complements the platform by allowing students to import assignments by scraping assignments directly from Canvas.
+
 
 
 > 🚨 **Note:** The Assignmint Chrome Extension is currently under review the Chrome Development Team and **not yet approved for public listing on the Chrome Web Store**. To use the extension, you’ll need to install it in developer mode. See the instructions below for more details.
