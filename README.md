@@ -42,4 +42,6 @@ Since Assignmint is not yet on the Chrome Web Store, you'll need to load it manu
    - Open Chrome and navigate to `chrome://extensions/`.
    - Enable **Developer Mode** in the top-right corner.
    - Click on **Load unpacked** and select the `dist` folder from the project directory.
-   - For additional details, see [Chrome's guide on loading unpacked extensions](https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked).
+   - For additional details, see [Chrome's guide on loading unpacked extensions](https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked).
+  
+
