@@ -1,51 +1,44 @@
-# React + TypeScript + Vite
+# Assignmint Chrome Extension 📝
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Assignmint is an online platform for organizing assignments and coursework, directly from Canvas! This extension complents the platform by allowing students to import assignments by scaping assignments directly from canvas.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+> 🚨 **Note:** The Assignmint Chrome Extension is currently under review the Chrome Development Team and **not yet approved for public listing on the Chrome Web Store**. To use the extension, you’ll need to install it in developer mode. See the instructions below for more details.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## 🌟 Features
 
-- Configure the top-level `parserOptions` property like this:
+- 📚 **Seamless Assignment Tracking:** Automatically fetch and display your assignments from Canvas.
+- 🕵️‍♂️ **Secure Web Scraping:** Leverages a logged-in user's active session to fetch information locally.
+- ⚡ **Built with Modern Tools:** Powered by [Vite](https://vitejs.dev/) and [React](https://react.dev/) for a blazing-fast, developer-friendly experience.
+- 🌈 **Minimalistic and User-Friendly:** Clean design to help you focus on what matters.
 
-```js
-export default tseslint.config({
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+---
 
-- Replace `tseslint.configs.recommended` to `tseslint.configs.recommendedTypeChecked` or `tseslint.configs.strictTypeChecked`
-- Optionally add `...tseslint.configs.stylisticTypeChecked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and update the config:
+## 🛠️ Installation
 
-```js
-// eslint.config.js
-import react from 'eslint-plugin-react'
+Since Assignmint is not yet on the Chrome Web Store, you'll need to load it manually in developer mode:
 
-export default tseslint.config({
-  // Set the react version
-  settings: { react: { version: '18.3' } },
-  plugins: {
-    // Add the react plugin
-    react,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended rules
-    ...react.configs.recommended.rules,
-    ...react.configs['jsx-runtime'].rules,
-  },
-})
-```
-# assignmint-chrome-extension
+1. **Clone the repository to your local machine:**
+   ```bash
+   git clone https://github.com/raphaelsanchez0/assignmint-chrome-extension.git
+   cd assignmint-extension
+   ```
+2. **Install Dependencies:**
+   ```bash
+   npm install
+   ```
+
+3. **Build the extension:**
+   ```bash
+   npm run build-all
+   ```
+4. **Locate the `dist` folder:**
+   - After running the build command, a folder named `dist` will be generated in the root directory of the project. This folder contains the production-ready files for the Chrome extension.
+   - Use this folder when loading the extension in Chrome (see Step 5).
+5. **Load the extension in Chrome:**
+   - Open Chrome and navigate to `chrome://extensions/`.
+   - Enable **Developer Mode** in the top-right corner.
+   - Click on **Load unpacked** and select the `dist` folder from the project directory.
+   - For additional details, see [Chrome's guide on loading unpacked extensions](https://developer.chrome.com/docs/extensions/mv3/getstarted/#unpacked).
